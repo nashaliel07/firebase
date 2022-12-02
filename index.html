@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/prueba.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">REGISTRATE</a></li>
+        <li><a href="./iniciarSesion.html">INICIA SESION</a></li>
+      </ul>
+    </nav>
+    <div class="contenedorLogo">
+      <img class="Logo"
+        src="https://www.ellucian.com/sites/default/files/styles/max_width_2400/public/uploads/images/2020/07/logo-white-certus-peru.png?itok=p9idiNXP"
+        alt="LOGO">
+    </div>
+
+  </header>
+
+
+  <main class="ini">
+    <div class="textRegis">
+      <h1>REGISTRATE PARA ACCEDER A CONTENIDO EXCLUSIVO!! </h1>
+    </div>
+
+    <form id="form">
+      <h1 class="text1">REGISTRATE</h1>
+      <p class="text2">EMAIL</p>
+      <input type="email" name="" id="email">
+      <br><br>
+      <p class="text2">CONTRASEÑA</p>
+      <input type="password" name="" id="pass"><br><br>
+      <div class="boton">
+        <button id="ingresar">Guardar</button>
+        <input type="reset" id="limpiar">
+      </div>
+
+    </form>
+
+  </main>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    //creamos una nueva cuenta
+    import {
+      getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult
+    } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3ucgwW2sAK2GdR2iajjnKpJy9SNJbaCs",
+      authDomain: "autenticacion-ca170.firebaseapp.com",
+      projectId: "autenticacion-ca170",
+      storageBucket: "autenticacion-ca170.appspot.com",
+      messagingSenderId: "304994277319",
+      appId: "1:304994277319:web:8abe43e0b902a1d5746be2"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+
+    //cONECTAMOS CON EL ID Y  OBTENEMOS LOS VALORES
+    document.getElementById("ingresar").addEventListener("click", function () {
+      //obtener valores
+      const email = document.querySelector("#email").value;
+      const pass = document.querySelector("#pass").value;
+
+      //Realizo la conexion de pagina a Firebasa                                
+      createUserWithEmailAndPassword(auth, email, pass)
+        .then((userCredential) => {
+          // Signed in 
+          alert("tu cuenta se a creado con exito ");
+          const user = userCredential.user;
+          // ...
+
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          alert("no se pudo ");
+        });
+    });
+  </script>
+
+</body>
+
+</html>

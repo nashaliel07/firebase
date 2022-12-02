@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/iniciarSesion.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="./index.html">REGISTRATE</a></li>
+        <li><a href="./iniciarSesion.html">INICIA SESION</a></li>
+      </ul>
+    </nav>
+    <div class="contenedorLogo">
+      <img class="Logo"
+        src="https://www.ellucian.com/sites/default/files/styles/max_width_2400/public/uploads/images/2020/07/logo-white-certus-peru.png?itok=p9idiNXP"
+        alt="LOGO">
+    </div>
+
+  </header>
+  <main class="ini">
+    <div class="textRegis">
+      <h1>¿YA TIENES UNA CUENTA? ENTONCES<br> INICIA SESION !</h1>
+    </div>
+
+    <div id="inICIAR">
+      <h1 class="text1">INICIAR SESION</h1><br>
+
+      <input type="email" name="" id="email1" placeholder="Aqui tu correo"> <br><br>
+      <input type="password" name="" id="pass1" placeholder="Aqui tu contraseña"><br><br>
+      <div class="boton">
+        <button id="acceder">INICIAR</button>
+        <button id="google">Iniciar sesion con<br> Google</button>
+      </div>
+
+    </div>
+
+
+  </main>
+
+
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+    //creamos una nueva cuenta
+    import {
+      getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect, getRedirectResult
+    } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC3ucgwW2sAK2GdR2iajjnKpJy9SNJbaCs",
+      authDomain: "autenticacion-ca170.firebaseapp.com",
+      projectId: "autenticacion-ca170",
+      storageBucket: "autenticacion-ca170.appspot.com",
+      messagingSenderId: "304994277319",
+      appId: "1:304994277319:web:8abe43e0b902a1d5746be2"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider(app);
+    //conecatamos con el ingreso de sesion
+    document.getElementById("acceder").addEventListener("click", function () {
+      const email1 = document.getElementById("email1").value;
+      const pass1 = document.getElementById("pass1").value;
+
+      signInWithEmailAndPassword(auth, email1, pass1)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // ...
+          alert("Tu cuenta esta activa")
+          //para que aparesca una pagima de internet
+          // window.open("https://www.youtube.com/")
+
+          // aparezca una pagina propia
+          window.open("prueba.html")
+
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert("esta cuenta no existe o no has llenado correctamente debes registrarte primero")
+        });
+    })
+
+    //creamos una funcion para limpiar todo el contenido 
+
+
+
+    document.getElementById("google").addEventListener("click", function () {
+      signInWithRedirect(auth, provider);
+      getRedirectResult(auth)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access Google APIs.
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+
+          // The signed-in user info.
+          const user = result.user;
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = GoogleAuthProvider.credentialFromError(error);
+          // ...
+        });
+    })
+    function limpiar() {
+      document.getElementById("form").reset();
+
+    }
+  </script>
+</body>
+
+</html>

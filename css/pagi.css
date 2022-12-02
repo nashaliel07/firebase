@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body {
+  background-color: #ab9680f3;
+  width: 100%;
+
+
+}
+
+header {
+  background-color: #53bcaf;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(220, 220, 240);
+}
+
+.contenedorLogo {
+  display: flex;
+  align-items: center;
+}
+
+.Logo {
+  width: auto;
+  height: 80px;
+  padding: 8px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  border-radius: 40px;
+  padding: 14px;
+  background-color: #000;
+  margin-left: 10px;
+
+}
+
+li a {
+  border-radius: 50px;
+  color: #53bcaf;
+  padding: 14px;
+  text-decoration: none;
+}
+
+
+li a:hover {
+  background-color: #fff;
+}
+
+
+main {
+  font-family: 'Alumni Sans Pinstripe', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 520px;
+  background-color: #53bcaf;
+  position: relative;
+  margin: 40px 0;
+  border-radius: 20px;
+  box-shadow: 0px 0px 8px 2px #000;
+}
+
+.boxtitle {
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  height: 38px;
+  background-color: #000;
+  color: #53bcaf;
+  border-radius: 50px;
+  box-shadow: 0px 0px 8px 2px #53bcaf;
+  position: absolute;
+  top: -20px;
+}
+
+.title {
+  color: #fff;
+  font-size: 32px;
+  text-align: center;
+}
+
+.box_imagen {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 8px 2px #fff;
+}
+
+.imagen {
+  width: 240px;
+  height: 240px;
+}
+
+.box_texto {
+  margin: 20px 0;
+  width: 90%;
+}
+
+.text2 {}
+
+.texto {
+  color: #000;
+  font-size: 20px;
+  font-weight: 100px;
+  text-align: center;
+}
