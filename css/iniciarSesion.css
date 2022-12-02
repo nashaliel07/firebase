@@ -6,6 +6,10 @@
 }
 
 body {
+  background-image: url(https://images.travelandleisureindia.in/wp-content/uploads/2021/10/10101348/Northern-lights-13.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-color: #ab9680f3;
   width: 100%;
   display: flex;
@@ -68,7 +72,7 @@ li a:hover {
 }
 
 .textRegis {
-
+  color: #fff;
   margin-top: 180px;
   font-size: 32px;
   margin-right: 25px;
